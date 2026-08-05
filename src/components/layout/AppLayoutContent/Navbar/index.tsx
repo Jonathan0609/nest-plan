@@ -24,7 +24,7 @@ const roomIcons: Record<Room, typeof IconHome> = {
   "Área externa": IconTrees,
 };
 
-interface SidebarProps {
+interface NavbarProps {
   products: Product[];
   selectedRoom: Room | "Todos";
   onRoomChange: (room: Room | "Todos") => void;
@@ -40,7 +40,7 @@ const navigationStyles = (active: boolean) => ({
   section: { color: "inherit" },
 });
 
-export function Sidebar({ products, selectedRoom, onRoomChange }: SidebarProps) {
+export function Navbar({ products, selectedRoom, onRoomChange }: NavbarProps) {
   const rooms = Array.from(new Set(products.map((product) => product.room)));
 
   return (
@@ -54,27 +54,22 @@ export function Sidebar({ products, selectedRoom, onRoomChange }: SidebarProps) 
           radius="lg"
           fit="cover"
         />
-        <div>
-          <Text fw={600} style={{ letterSpacing: "-0.02em" }}>
+
+        <Stack gap={4}>
+          <Text fw={600} lh={1}>
             NestPlan
           </Text>
           <Text size="xs" c="rgba(255, 255, 255, 0.5)">
             Reforma sem improviso
           </Text>
-        </div>
+        </Stack>
       </Group>
 
       <Stack gap="xs" px="sm" mt="lg">
-        <Text
-          px="sm"
-          size="10px"
-          fw={700}
-          tt="uppercase"
-          c="rgba(255, 255, 255, 0.38)"
-          lts="0.18em"
-        >
+        <Text px="sm" size="10px" fw={700} tt="uppercase" c="dimmed" lts="0.18em">
           Planejamento
         </Text>
+
         <NavLink
           label="Visão geral"
           leftSection={<IconLayoutDashboard size={18} />}
@@ -96,6 +91,7 @@ export function Sidebar({ products, selectedRoom, onRoomChange }: SidebarProps) 
         >
           Ambientes
         </Text>
+
         {rooms.map((room) => {
           const Icon = roomIcons[room];
           const count = products.filter((product) => product.room === room).length;

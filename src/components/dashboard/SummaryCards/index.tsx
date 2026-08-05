@@ -25,7 +25,6 @@ export function SummaryCards({ totals, budget, purchasedCount }: SummaryCardsPro
       value: formatCurrency(totals.planned),
       hint: `${totals.itemCount} ${totals.itemCount === 1 ? "item" : "itens"} na lista`,
       icon: IconCurrencyDollar,
-      background: "#fef1e8",
       color: "#c96c3d",
     },
     {

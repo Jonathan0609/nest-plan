@@ -28,6 +28,19 @@ uma API substituirá somente a camada em `lib/product-storage.ts` e o hook `hook
 - Regras de estado e mutações ficam em hooks. Componentes recebem dados e callbacks tipados.
 - Componentes de página ficam em `src/components/dashboard`; componentes do domínio de produto
   ficam em `src/components/products`.
+- Todo componente React dentro de `src/components` deve ser implementado em um arquivo `index.tsx`.
+  Componentes internos ficam em pastas próprias nomeadas em PascalCase (por exemplo,
+  `src/components/dashboard/PageHeader/index.tsx`); o `index.tsx` na raiz de uma área pode ser seu
+  ponto público de composição, como `src/components/dashboard/index.tsx`. Não crie arquivos de
+  componente nomeados como `page-header.tsx`; arquivos auxiliares sem JSX, como `types.ts`, podem
+  ter nomes descritivos.
+- Arquivos especiais do App Router (`page.tsx`, `layout.tsx`, `loading.tsx` e similares) seguem a
+  convenção do Next.js e são a única exceção ao padrão de `index.tsx`.
+- Layouts compartilhados de rota concentram o shell visual e os providers necessários. Componentes
+  de página não duplicam `AppShell`, navbar ou containers que pertencem ao layout da rota.
+- Componentes de página apenas orquestram seções, dados e callbacks. Extraia para um componente
+  próprio cada bloco visual com responsabilidade independente; mantenha filtros, estado de diálogos
+  e mutações em hooks específicos da funcionalidade.
 - Formulários usam `@mantine/form` e schemas Zod 4 integrados pelo `schemaResolver`; não adicione
   outra biblioteca de formulários.
 - Prefira funções pequenas com nomes que expliquem a intenção. Evite abstrações genéricas antes de

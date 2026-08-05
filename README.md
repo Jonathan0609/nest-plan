@@ -35,13 +35,19 @@ npm run build
 
 ## Estrutura
 
-- `src/app/`: App Router, provider, tema e estilos globais;
-- `src/components/dashboard/`: composição da tela e indicadores;
+- `src/app/`: App Router, layouts de rota, provider, tema e estilos globais;
+- `src/components/layout/`: shell visual compartilhado, container e navegação;
+- `src/components/dashboard/`: composição da tela, seções e diálogos da visão geral;
 - `src/components/products/`: formulário Mantine, cartões, imagem e detalhes;
+- `src/hooks/use-app-layout.ts`: estado compartilhado entre o layout e as páginas da aplicação;
+- `src/hooks/use-dashboard.ts`: filtros, diálogos e ações da visão geral;
 - `src/hooks/use-products.ts`: estado e operações do catálogo;
 - `src/lib/form-schemas.ts`: schemas Zod e tipos de entrada dos formulários;
 - `src/lib/product-storage.ts`: única camada que conhece o `localStorage`;
 - `src/types/product.ts`: modelo e opções do domínio.
+
+Cada componente em `src/components` fica em uma pasta PascalCase e usa `index.tsx` como ponto de
+entrada. As páginas apenas compõem esses blocos; o shell compartilhado fica no layout da rota.
 
 ## Migração futura para backend
 
