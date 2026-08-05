@@ -1,0 +1,27 @@
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f6f3ee;
+  background-image: radial-gradient(circle at 82% 0%, rgba(232, 135, 83, 0.08), transparent 28rem);
+  color: #203229;
+}
+
+button,
+a,
+input,
+textarea,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(232, 135, 83, 0.28);
+}
